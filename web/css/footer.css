@@ -1,0 +1,88 @@
+.ft {
+  background-color: #f7f7f7;
+  color: #333;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.ft p {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 20px;
+}
+
+.ft img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.ft .box {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.ft .button {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ft .button:hover {
+  background-color: #222;
+}
+
+.ft ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.ft li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.ft .product {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ft .product img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.ft .product h2 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.ft .product p {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.ft a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.ft a:hover {
+  color: #222;
+}
