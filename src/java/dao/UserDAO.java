@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.List;
 import model.User;
 
 public interface UserDAO {
@@ -14,5 +15,5 @@ public interface UserDAO {
 	
 	public User getUser(String username);
         public User getUserByUserid(int user_id);
-
+        public List<User> getUsers();
 }

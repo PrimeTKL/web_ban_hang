@@ -16,7 +16,7 @@ import model.Category;
 
 public class CategoryDAOImpl{
 
-	 Connection conn = null;
+    Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
 
@@ -54,25 +54,25 @@ public class CategoryDAOImpl{
 
 	
 	public List<Category> getList() throws Exception {
-		 conn = new DBConnect().getConnection();
-		String sql = "select * from category";
-		List<Category> list = new ArrayList<Category>();
-		try {
-			PreparedStatement ps = (PreparedStatement) conn
-					.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				int ma_the_loai = rs.getInt("ma_the_loai");
-				String ten_the_loai = rs.getString("ten_the_loai");
-				String mo_ta = rs.getString("mo_ta");
-				String hinh_anh = rs.getString("hinh_anh");
-				list.add(new Category(ma_the_loai, ten_the_loai, mo_ta, hinh_anh));
-			}
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return list;
+            conn = new DBConnect().getConnection();
+            String sql = "select * from category";
+            List<Category> list = new ArrayList<Category>();
+            try {
+                    PreparedStatement ps = (PreparedStatement) conn
+                                    .prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+                    while (rs.next()) {
+                            int ma_the_loai = rs.getInt("ma_the_loai");
+                            String ten_the_loai = rs.getString("ten_the_loai");
+                            String mo_ta = rs.getString("mo_ta");
+                            String hinh_anh = rs.getString("hinh_anh");
+                            list.add(new Category(ma_the_loai, ten_the_loai, mo_ta, hinh_anh));
+                    }
+                    conn.close();
+            } catch (SQLException e) {
+                    e.printStackTrace();
+            }
+            return list;
 	}
 
 	public static void main(String[] args) throws Exception {

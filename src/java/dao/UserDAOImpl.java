@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +15,7 @@ import model.Category;
 import model.User;
 
 public class UserDAOImpl implements UserDAO {
-
+    
 	@Override
 	public void addUser(User u) {
 		Connection con = null;
@@ -189,6 +191,40 @@ public class UserDAOImpl implements UserDAO {
                     e.printStackTrace();
             }
             return u;
+    }
+
+    @Override
+    public List<User> getUsers() {
+        List<User> list = new ArrayList<User>();
+        try {
+            Connection conn = new DBConnect().getConnection();
+            String sql = "select * from user where role = 2";
+            
+            try {
+                PreparedStatement ps = (PreparedStatement) conn
+                        .prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int user_id= rs.getInt("user_id");
+                    String username = rs.getString("username");
+                    String password = rs.getString("password");
+                    Date ngaysinh = rs.getDate("ngaysinh");
+                    String gioitinh = rs.getString("gioitinh");
+                    String email = rs.getString("email");
+                    String sdt = rs.getString("sdt");
+                    String diachi = rs.getString("diachi");
+                    String role = rs.getString("role");
+                    list.add(new User(user_id, username, password, ngaysinh, gioitinh, email, sdt, diachi, role));
+                }
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            
+        } catch (Exception ex) {
+                Logger.getLogger(UserDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 
 
