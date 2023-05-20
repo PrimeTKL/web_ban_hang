@@ -67,7 +67,59 @@ body {
 .delete:hover{
 	background-color: var(--yellow);
 }
-
+/* phân trang*/
+/* CSS cũ */
+.product-list {
+	/* CSS cho vùng hiển thị sản phẩm */
+  }
+  
+  .pagination {
+	text-align: center;
+  }
+  
+  .pagination ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  }
+  
+  .pagination ul li {
+	display: inline-block;
+	margin: 0 5px;
+  }
+  
+  .pagination ul li a {
+	display: inline-block;
+	padding: 5px 10px;
+	text-decoration: none;
+	background-color: #f2f2f2;
+	color: #333;
+	border-radius: 3px;
+  }
+  
+  .pagination ul li a:hover {
+	background-color: #ddd;
+  }
+  
+/* Thêm CSS cho mũi tên */
+.pagination ul li a i {
+	display: inline-block;
+  }
+  
+  .pagination ul li a i:before {
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+  }
+  
+  /* Thêm CSS cho các mũi tên sang trái và sang phải */
+  .pagination ul li:first-child a i:before {
+	content: "\f053"; /* Mã Unicode cho mũi tên sang trái */
+  }
+  
+  .pagination ul li:last-child a i:before {
+	content: "\f054"; /* Mã Unicode cho mũi tên sang phải */
+  }
+  
 /* thêm sp */
 .savesp{
 	padding: 5px;
@@ -637,4 +689,53 @@ button:hover{
 	#content main .table-data .todo .todo-list {
 		min-width: 420px;
 	}
+}
+
+/*model*/
+.change_product{
+	background-color: #F9F9F9;
+	max-width: calc(100%-32px);
+	min-height:200px;
+	background: linear-gradient(#e2eb67, #84dddd); ;
+    border-radius: 20px;
+}
+.change_product .head,.footer{
+	padding:10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.change_product .footer a:hover{
+       background-color: #f10d06;
+}
+.change_product h3{
+	margin: 5px;
+}
+.change_product .close{
+	padding: 3px;
+	border: thin;
+	background: #e0716d;
+	border-radius: 5px;
+	color:white;
+}
+.change_product .completed_list{
+	margin-bottom: 20px;
+	margin-left: 20px;
+} 
+.completed_list input{
+	width: 50%;
+}
+.modal.open{
+	display: flex;
+}
+.modal{
+	position: fixed;
+	top:0;
+	left: 0;
+    right: 0;
+	bottom: 0;
+	display: none;
+	background: rgba(0,0,0, 0.4);
+	align-items: center;
+	justify-content: center;
 }
