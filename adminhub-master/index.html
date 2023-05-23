@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<>
+<head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -26,7 +26,7 @@
 			</a>
 			<ul class="side-menu top">
 				<li class="active">
-					<a href="">
+					<a href="" id="thongke">
 						<i class='bx bxs-dashboard'></i>
 						<span class="text">Dashboard</span>
 					</a>
@@ -51,9 +51,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="#" id="tk">
 						<i class='bx bxs-group'></i>
-						<span class="text">Team</span>
+						<span class="text">account</span>
 					</a>
 				</li>
 			</ul>
@@ -117,11 +117,11 @@
 					</div>
 					<a href="#" class="btn-download">
 						<i class='bx bxs-cloud-download'></i>
-						<span class="text">thêm sản phẩm</span>
+						<span class="text">thêm tài khoản</span>
 					</a>
 				</div>
 
-				<ul class="box-info">
+				<ul class="box-info thongketrang">
 					<li>
 						<i class='bx bxs-calendar-check'></i>
 						<span class="text">
@@ -157,66 +157,66 @@
 							<thead>
 								<tr>
 									<th>User</th>
-									<th>email</th>
+									<th>Tổng giá trị đơn hàng</th>
 									<th>Date Order</th>
-									<th>Status</th>
+									<th>Trạng thái</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
 									<td>
 										<img src="img/people.png">
-										<p>John Doe</p>
-
+										<pr>John Doe <small>bruno@crossover.org</small></pr>
+                                         
 									</td>
 
-									<td> <small>bruno@crossover.org</small></td>
+									<td>5000$ </td>
 									<td>01-10-2021</td>
-									<td><span class="status completed">Completed</span></td>
+									<td><span class="status process">process</span></td>
 								</tr>
 								<tr>
 									<td>
 										<img src="img/people.png">
-										<p>John Doe</p>
-
+										<pr>John Doe <small>bruno@crossover.org</small></pr>
+                                         
 									</td>
 
-									<td> <small>bruno@crossover.org</small></td>
+									<td>5000$ </td>
 									<td>01-10-2021</td>
-									<td><span class="status completed">Completed</span></td>
+									<td><span class="status completed">completed</span></td>
 								</tr>
 								<tr>
 									<td>
 										<img src="img/people.png">
-										<p>John Doe</p>
-
+										<pr>John Doe <small>bruno@crossover.org</small></pr>
+                                         
 									</td>
 
-									<td> <small>bruno@crossover.org</small></td>
-									<td>01-10-2021</td>
-									<td><span class="status completed">Completed</span></td>
-								</tr>
-								<tr>
-									<td>
-										<img src="img/people.png">
-										<p>John Doe</p>
-
-									</td>
-
-									<td> <small>bruno@crossover.org</small></td>
+									<td>5000$ </td>
 									<td>01-10-2021</td>
 									<td><span class="status pending">pending</span></td>
 								</tr>
 								<tr>
 									<td>
 										<img src="img/people.png">
-										<p>John Doe</p>
-
+										<p>John Doe <small>bruno@crossover.org</small></p>
+                                         
 									</td>
 
-									<td> <small>bruno@crossover.org</small></td>
+									<td>5000$ </td>
 									<td>01-10-2021</td>
-									<td><span class="status process">process</span></td>
+									<td><span class="status completed">Completed</span></td>
+								</tr>
+								<tr>
+									<td>
+										<img src="img/people.png">
+										<pr>John Doe <small>bruno@crossover.org</small></pr>
+                                         
+									</td>
+
+									<td>5000$ </td>
+									<td>01-10-2021</td>
+									<td><span class="status completed">Completed</span></td>
 								</tr>
 							</tbody>
 						</table>
@@ -262,7 +262,11 @@
 					</div>
 				</div>
 				<div class="table-data">
-					<div class="order">
+					<div class="order list-tk">
+						<button class="btn-download js-addaccount">
+							<i class='bx bxs-cloud-download'></i>
+							<span class="text">thêm tài khoản</span>
+						</button>
 						<div class="head">
 							<h3>quản lý người dùng</h3>
 							<i class='bx bx-search'> <input class="savesp" type="text"></i>
@@ -275,6 +279,10 @@
 									<th>permission</th>
 									<th>email</th>
 									<th>password</th>
+									<th>phone</th>
+									<th>giới tính</th>
+									<th>ngày sinh</th>
+									<th>địa chỉ</th>
 									<th>sửa</th>
 									<th>xóa</th>
 								</tr>
@@ -288,7 +296,10 @@
                                      <td><p>customer</p></td>
 									<td> <small>bruno@crossover.org</small></td>
 									<td>1234567</td>
-									<td><button class="update">sửa</button></td>
+									<td>nam</td>
+									<td>02-02-2002</td>
+									<td>Hà Nội</td>
+									<td><button class="update js-updateuser">sửa</button></td>
 									<td><a class="delete" href="#">xóa</a></td>
 								</tr>
 								<tr>
@@ -299,7 +310,10 @@
                                      <td><p>customer</p></td>
 									<td> <small>bruno@crossover.org</small></td>
 									<td>1234567</td>
-									<td><button class="update">sửa</button></td>
+									<td>nam</td>
+									<td>02-02-2002</td>
+									<td>Hà Nội</td>
+									<td><button class="update js-updateuser">sửa</button></td>
 									<td><a class="delete" href="#">xóa</a></td>
 								</tr>
 								<tr>
@@ -310,7 +324,10 @@
                                      <td><p>AdminHub</p></td>
 									<td> <small>bruno@crossover.org</small></td>
 									<td>1234567</td>
-									<td><button class="update">sửa</button></td>
+									<td>nam</td>
+									<td>02-02-2002</td>
+									<td>Hà Nội</td>
+									<td><button class="update js-updateuser">sửa</button></td>
 									<td><a class="delete" href="#">xóa</a></td>
 								</tr>
 								<tr>
@@ -321,7 +338,10 @@
                                      <td><p>AdminHub</p></td>
 									<td> <small>bruno@crossover.org</small></td>
 									<td>1234567</td>
-									<td><button class="update">sửa</button></td>
+									<td>nam</td>
+									<td>02-02-2002</td>
+									<td>Hà Nội</td>
+									<td><button class="update js-updateuser">sửa</button></td>
 									<td><a class="delete" href="#">xóa</a></td>
 								</tr>
 								<tr>
@@ -332,11 +352,24 @@
                                      <td><p>AdminHub</p></td>
 									<td> <small>bruno@crossover.org</small></td>
 									<td>1234567</td>
-									<td><button class="update">sửa</button></td>
+									<td>nam</td>
+									<td>02-02-2002</td>
+									<td>Hà Nội</td>
+									<td><button class="update js-updateuser">sửa</button></td>
 									<td><a class="delete" href="#">xóa</a></td>
 								</tr>
 							</tbody>
 						</table>
+						<div class="pagination">
+							<ul>
+								<li><a href="#"><i class="fas fa-chevron-left"></i></a></li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+								<!-- Thêm các nút phân trang khác vào đây -->
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="table-data">
@@ -368,7 +401,7 @@
 									<td><img src="" alt=""></td>
 									<td>1000</td>
 									<td><span class="status completed">500$</span></td>
-									<td><button class="update js_update">sửa</button></td>
+									<td><button class="update js-updatesp">sửa</button></td>
 									<td><a class="delete" href="#">xóa</a></td>
 								</tr>
 								<tr>
@@ -379,7 +412,7 @@
 									<td><img src="" alt=""></td>
 									<td>1000</td>
 									<td><span class="status completed">500$</span></td>
-									<td><button class="update js_update">sửa</button></td>
+									<td><button class="update js-updatesp">sửa</button></td>
 									<td><a class="delete" href="#">xóa</a></td>
 								</tr>
 								<tr>
@@ -390,7 +423,7 @@
 									<td><img src="" alt=""></td>
 									<td>20</td>
 									<td><span class="status completed">500$</span></td>
-									<td><button class="update js_update">sửa</button></td>
+									<td><button class="update js-updatesp">sửa</button></td>
 									<td><a class="delete" href="#">xóa</a></td>
 								</tr>
 								<tr>
@@ -401,7 +434,7 @@
 									<td><img src="" alt=""></td>
 									<td>50</td>
 									<td><span class="status completed">500$</span></td>
-									<td><button class="update js_update">sửa</button></td>
+									<td><button class="update js-updatesp">sửa</button></td>
 									<td><a class="delete" href="#">xóa</a></td>
 								</tr>
 							</tbody>
@@ -461,8 +494,9 @@
 
 		</section>
 		<!-- CONTENT -->
-		<section class="modal js_modal">
-			<div class="todo change_product">
+		<!-- sửa sản phẩm -->
+		<div class="modal js_modal">
+			<div class="todo change_product change">
 				<div class="head">
 					<h3>sửa sản phẩm</h3>
 					<i class='bx bx-filter'></i>
@@ -478,7 +512,7 @@
 
 					</li>
 					<li class="completed_list">
-						<p>ảnh sản phẩm <input class="addsp" type="file" placeholder=""></p>
+						<p>ảnh sản phẩm <input class="addsp" type="file" placeholder=""></p>or link<input type="url">
 
 					</li>
 					<li class="completed_list">
@@ -488,15 +522,111 @@
 					</li>
 					<li class="completed_list">
 						<p>số lượng <input class="addsp" type="text" placeholder="note..."></p>
-						<i class='bx bx-dots-vertical-rounded'></i>
 					</li>
 
 				</ul>
-				<div class="footer js_modalclose"><a class="close ">close</a></div>
+				<div class="footer js-modalclose"><a class="close ">close</a></div>
 			</div>
-		
-		</section>
-		
+		</div>
+		<!-- sửa thông tin khách hàng-->
+		<div class="modaluser js-modaluser">
+			<div class="todo change_user change">
+				
+				<div class="head">
+					<h3>sửa thông tin khách hàng</h3>
+					<i class='bx bx-filter'></i>
+					<input class="savesp" type="submit" title="Lưu thông tin" value="lưu thông tin" />
+				</div>
+				<ul class="todo-list">
+					<li class="completed_list">
+						<p>tên khách hàng <input class="addsp" type="text" placeholder="tên khách hàng..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>chức vụ <input class="addsp" type="text" placeholder="chức vụ..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>email <input class="addsp" type="text" placeholder="email..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>password <input class="addsp" type="text" placeholder="password..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>ảnh  <input class="addsp" type="file" placeholder=""></p>or link<input type="url">
+
+					</li>
+					<li class="completed_list">
+						<p>phone <input class="addsp" type="text" placeholder="phone..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>địa chỉ <input class="addsp" type="text" placeholder="place..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>ngày sinh <input class="addsp" type="text" placeholder="bday..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>giới tính <input class="addsp" type="text" placeholder="giới tính..."></p>
+					</li>
+
+				</ul>
+				<div class="footer js-modalcloseus"><a class="close ">close</a></div>
+			</div>
+		</div>
+		<!--thêm tk-->
+		<div class="modalacc js-modalaccount">
+			<div class="todo change">
+				<div class="head">
+					<h3>thêm khách hàng</h3>
+					<i class='bx bx-filter'></i>
+					<input class="savesp" type="submit" title="Lưu thông tin" value="lưu thông tin" />
+				</div>
+				<ul class="todo-list">
+					<li class="completed_list">
+						<p>tên khách hàng <input class="addsp" type="text" placeholder="tên khách hàng..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>chức vụ <input class="addsp" type="text" placeholder="chức vụ..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>email <input class="addsp" type="text" placeholder="email..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>password <input class="addsp" type="text" placeholder="password..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>ảnh  <input class="addsp" type="file" placeholder=""></p>or link<input type="url">
+
+					</li>
+					<li class="completed_list">
+						<p>phone <input class="addsp" type="text" placeholder="phone..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>địa chỉ <input class="addsp" type="text" placeholder="place..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>ngày sinh <input class="addsp" type="text" placeholder="bday..."></p>
+
+					</li>
+					<li class="completed_list">
+						<p>giới tính <input class="addsp" type="text" placeholder="giới tính..."></p>
+					</li>
+
+				</ul>
+				<div class="footer js-modalcloseacc"><a class="close ">close</a></div>
+			</div>
+		</div>
 		<script src="script.js"></script>
 	</body>
 

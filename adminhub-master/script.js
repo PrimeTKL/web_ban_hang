@@ -100,3 +100,65 @@ myLink.addEventListener('click', function (event) {
 	}
 });
 
+var myLink=document.getElementById('tk')
+// Xử lý sự kiện click
+myLink.addEventListener('click', function (event) {
+	event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+
+	var orderElement = document.querySelector('.list-tk');
+	if (orderElement) {
+		orderElement.scrollIntoView(); // Chuyển hướng đến phần tử có class .order
+	}
+});
+var myLink=document.getElementById('thongke')
+// Xử lý sự kiện click
+myLink.addEventListener('click', function (event) {
+	event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+
+	var orderElement = document.querySelector('.thongketrang');
+	if (orderElement) {
+		orderElement.scrollIntoView(); // Chuyển hướng đến phần tử có class .order
+	}
+});
+
+//xử lý hiển thị sửa sản phẩm
+const updates=document.querySelectorAll('.js-updatesp')
+            const modal=document.querySelector('.modal')
+			const modalClose=document.querySelector('.js-modalclose')
+			function showUpdates(){
+				modal.classList.add('open')			}
+			function closeUpdate(){
+				modal.classList.remove('open')
+			}
+			for(const update of updates){
+				//lắng nghe click của người dùng
+				update.addEventListener('click',showUpdates)
+			}
+
+			modalClose.addEventListener('click',closeUpdate)
+// xử lý sửa thông tin tài khoản
+const updatesuser=document.querySelectorAll('.js-updateuser') 
+      const modalus=document.querySelector('.modaluser')
+	  const modalCloseus=document.querySelector('.js-modalcloseus')
+	  function showUpdatesus(){
+		modalus.classList.add('open')
+	  }
+	  function closeUpdateus(){
+		modalus.classList.remove('open')
+	  }
+	  for(const updateus of updatesuser){
+		updateus.addEventListener('click',showUpdatesus)
+	  }
+	  modalCloseus.addEventListener('click',closeUpdateus)
+//sử lý thêm tk
+	  const updatesacc=document.querySelector('.js-addaccount') 
+      const modalacc=document.querySelector('.modalacc')
+	  const modalCloseacc=document.querySelector('.js-modalcloseacc')
+	  function showUpdatesacc(){
+		modalacc.classList.add('open')
+	  }
+	  function closeUpdateacc(){
+		modalacc.classList.remove('open')
+	  }
+	updatesacc.addEventListener('click',showUpdatesacc)
+	  modalCloseacc.addEventListener('click',closeUpdateacc)
