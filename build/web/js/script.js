@@ -1,4 +1,4 @@
-/*  xử lý sự kiện khi người dùng nhấp vào một mục trong menu bên.*/
+*  xử lý sự kiện khi người dùng nhấp vào một mục trong menu bên.*/
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 allSideMenu.forEach(item => {
