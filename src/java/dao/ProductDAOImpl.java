@@ -118,11 +118,12 @@ public class ProductDAOImpl implements ProductDAO {
 		try {
                     Connection con = new DBConnect().getConnection();
                     String sql = "select * from product where ma_san_pham='" + id + "'";
-                    Product p = new Product();
+                    Product p = null;
                     try {
                         PreparedStatement ps = (PreparedStatement) con
                                 .prepareStatement(sql);
                         ResultSet rs = ps.executeQuery();
+//                        System.out.println(rs);
                         while (rs.next()) {
                             int ma_san_pham = rs.getInt("ma_san_pham");
                             int ma_the_loai = rs.getInt("ma_the_loai");
@@ -134,6 +135,7 @@ public class ProductDAOImpl implements ProductDAO {
                             int so_luong_kho = rs.getInt("so_luong_kho");
                             int so_luong_ban = rs.getInt("so_luong_ban");
                             int hien_thi = rs.getInt("hien_thi");
+                            System.out.println(ma_san_pham);
                             p = new Product(ma_san_pham, ma_the_loai, ten_san_pham,
                                     hinh_anh, gia_ban, hang_san_xuat, thong_tin, so_luong_kho, so_luong_ban, hien_thi);
                         }

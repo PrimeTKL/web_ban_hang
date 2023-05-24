@@ -22,7 +22,7 @@ import model.Product;
  *
  * @author Windows 10 TIMT
  */
-@WebServlet(name="ProductApi", urlPatterns={"/api/product"})
+@WebServlet(name="ProductApi", urlPatterns={"/api/product/*"})
 public class ProductApi extends HttpServlet {
    
     /** 
@@ -62,10 +62,39 @@ public class ProductApi extends HttpServlet {
     throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
-        ProductDAO productDAO = new ProductDAOImpl();
-        List<Product> products = productDAO.getList();
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(response.getWriter(), products);
+        
+        String path = request.getPathInfo();
+//        System.out.println(path);
+        if (path == null) {
+            ProductDAO productDAO = new ProductDAOImpl();
+            List<Product> products = productDAO.getList();
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(response.getWriter(), products);
+        }
+        else{
+            String[] pathVariable = path.split("/");
+//            System.out.println("." + path);
+//            System.out.println("size: " + pathVariable.length);
+//            for (String string : pathVariable) {
+//                System.out.println(string + ", ");
+//            }
+            if (pathVariable.length == 2) {
+                try {
+                    int ma_san_pham = Integer.parseInt(pathVariable[1]);
+                    
+                    ProductDAO productDAO = new ProductDAOImpl();
+                    Product product = productDAO.getProduct(ma_san_pham);
+                    if (product != null) {
+                        ObjectMapper objectMapper = new ObjectMapper();
+                        System.out.println(product.getMa_san_pham());
+                        objectMapper.writeValue(response.getWriter(), product);
+                    }
+                    
+                } catch (NumberFormatException e) {
+                    System.out.println(e);
+                }
+            }
+        }
     } 
 
     /** 
@@ -78,7 +107,14 @@ public class ProductApi extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        ObjectMapper objectMapper = new ObjectMapper();
+        Product product = objectMapper.readValue(request.getReader(), Product.class);
+//        ProductDAO productDAO = new ProductDAOImpl();
+//        productDAO.addProduct(product);
+        objectMapper.writeValue(response.getWriter(), product);
+        
     }
 
     /** 
