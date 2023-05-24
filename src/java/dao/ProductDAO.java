@@ -18,5 +18,5 @@ public interface ProductDAO {
 	public Product getProduct(int ma_san_pham);
 	
 	public List<Product> searchList(String ten_san_pham, int ma_the_loai);
-
+        public void updateProduct(Product p);
 }

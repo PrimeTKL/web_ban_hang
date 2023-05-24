@@ -32,8 +32,20 @@ public class ProductApi extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp)
     throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("application/json");
+        ObjectMapper objectMapper = new ObjectMapper();
+        Product product = objectMapper.readValue(req.getReader(), Product.class);
+//        ProductDAO productDAO = new ProductDAOImpl();
+//        productDAO.addProduct(product);
+        objectMapper.writeValue(resp.getWriter(), product);
+    } 
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -65,7 +77,7 @@ public class ProductApi extends HttpServlet {
         
         String path = request.getPathInfo();
 //        System.out.println(path);
-        if (path == null) {
+        if (path == null || path.equals("/")) {
             ProductDAO productDAO = new ProductDAOImpl();
             List<Product> products = productDAO.getList();
             ObjectMapper objectMapper = new ObjectMapper();

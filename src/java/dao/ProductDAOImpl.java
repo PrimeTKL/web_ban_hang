@@ -16,31 +16,30 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public void addProduct(Product p) {
-		Connection con = null;
+            Connection con = null;
             try {
                 con = new DBConnect().getConnection();
             } catch (Exception ex) {
                 Logger.getLogger(ProductDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
-		String sql = "insert into product value(?,?,?,?,?,?, ?, ?)";
-		PreparedStatement ps;
-		try {
-			ps = (PreparedStatement) con.prepareStatement(sql);
-			ps.setInt(1, p.getMa_san_pham());
-			ps.setString(2, p.getTen_san_pham());
-			ps.setString(3, p.getHinh_anh());
-			ps.setInt(4, p.getGia_ban());
-			ps.setString(5, p.getHang_san_xuat());
-			ps.setString(6, p.getThong_tin());
-                        ps.setInt(7, p.getSo_luong_kho());
-                        ps.setInt(8, p.getSo_luong_ban());
-                        ps.setInt(9, p.getHien_thi());
-			ps.executeUpdate();
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
+            String sql = "insert into product value(?,?,?,?,?,?, ?, ?)";
+            PreparedStatement ps;
+            try {
+                    ps = (PreparedStatement) con.prepareStatement(sql);
+                    ps.setInt(1, p.getMa_the_loai());
+                    ps.setString(2, p.getTen_san_pham());
+                    ps.setString(3, p.getHinh_anh());
+                    ps.setInt(4, p.getGia_ban());
+                    ps.setString(5, p.getHang_san_xuat());
+                    ps.setString(6, p.getThong_tin());
+                    ps.setInt(7, p.getSo_luong_kho());
+                    ps.setInt(8, p.getSo_luong_ban());
+                    ps.setInt(9, p.getHien_thi());
+                    ps.executeUpdate();
+                    con.close();
+            } catch (SQLException e) {
+                    e.printStackTrace();
+            }
 	}
 
 	@Override
@@ -207,4 +206,45 @@ public class ProductDAOImpl implements ProductDAO {
 		
 	
 	}
+
+    @Override
+    public void updateProduct(Product p) {
+        Connection con = null;
+        try {
+            con = new DBConnect().getConnection();
+        } catch (Exception ex) {
+            Logger.getLogger(ProductDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String sql = "UPDATE\n" +
+                    "    `product`\n" +
+                    "SET\n" +
+                    "    `ma_the_loai` = ?,\n" +
+                    "    `ten_san_pham` = ?,\n" +
+                    "    `hinh_anh` = ?,\n" +
+                    "    `gia_ban` = ?,\n" +
+                    "    `hang_san_xuat` = ?,\n" +
+                    "    `thong_tin` = ?,\n" +
+                    "    `so_luong_kho` = ?,\n" +
+                    "    `so_luong_ban` = ?,\n" +
+                    "    `hien_thi` = ?\n" +
+                    "WHERE ma_san_pham = ?";
+        PreparedStatement ps;
+        try {
+                ps = (PreparedStatement) con.prepareStatement(sql);
+                ps.setInt(1, p.getMa_the_loai());
+                ps.setString(2, p.getTen_san_pham());
+                ps.setString(3, p.getHinh_anh());
+                ps.setInt(4, p.getGia_ban());
+                ps.setString(5, p.getHang_san_xuat());
+                ps.setString(6, p.getThong_tin());
+                ps.setInt(7, p.getSo_luong_kho());
+                ps.setInt(8, p.getSo_luong_ban());
+                ps.setInt(9, p.getHien_thi());
+                ps.setInt(10, p.getMa_san_pham());
+                ps.executeUpdate();
+                con.close();
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
+    }
 }
