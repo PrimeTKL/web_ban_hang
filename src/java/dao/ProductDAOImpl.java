@@ -247,4 +247,25 @@ public class ProductDAOImpl implements ProductDAO {
                 e.printStackTrace();
         }
     }
+
+    @Override
+    public void deleteProduct(int ma_san_pham) {
+        Connection con = null;
+        try {
+            con = new DBConnect().getConnection();
+        } catch (Exception ex) {
+            Logger.getLogger(ProductDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String sql = "";
+        PreparedStatement ps;
+        try {
+                ps = (PreparedStatement) con.prepareStatement(sql);
+                ps.setInt(1, p.getMa_the_loai());
+                
+                ps.executeUpdate();
+                con.close();
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
+    }
 }

@@ -41,7 +41,7 @@ public class ProductApi extends HttpServlet {
         ObjectMapper objectMapper = new ObjectMapper();
         Product product = objectMapper.readValue(req.getReader(), Product.class);
 //        ProductDAO productDAO = new ProductDAOImpl();
-//        productDAO.addProduct(product);
+//        productDAO.updateProduct(product);
         objectMapper.writeValue(resp.getWriter(), product);
     } 
 
@@ -109,6 +109,44 @@ public class ProductApi extends HttpServlet {
         }
     } 
 
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("application/json");
+        
+        String path = req.getPathInfo();
+//        System.out.println(path);
+        if (path != null || !path.equals("/")) {
+            String[] pathVariable = path.split("/");
+//            System.out.println("." + path);
+//            System.out.println("size: " + pathVariable.length);
+//            for (String string : pathVariable) {
+//                System.out.println(string + ", ");
+//            }
+            if (pathVariable.length == 2) {
+                try {
+                    int ma_san_pham = Integer.parseInt(pathVariable[1]);
+                    
+                    ProductDAO productDAO = new ProductDAOImpl();
+                    Product product = productDAO.getProduct(ma_san_pham);
+                    if (product != null) {
+                        ObjectMapper objectMapper = new ObjectMapper();
+                        System.out.println(product.getMa_san_pham());
+                        
+                        objectMapper.writeValue(resp.getWriter(), product);
+                    }
+                    
+                } catch (NumberFormatException e) {
+                    System.out.println(e);
+                }
+            }
+        }
+        else{
+            
+        }
+    }
+
+    
     /** 
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request

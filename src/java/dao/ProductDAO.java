@@ -8,7 +8,7 @@ public interface ProductDAO {
 
 	// thêm sản phẩm mới
 	public void addProduct(Product p);
-
+        public void deleteProduct(int ma_san_pham);
 	// hiển thị danh sách sản phẩm
 	public List<Product> getList();
 
@@ -19,4 +19,5 @@ public interface ProductDAO {
 	
 	public List<Product> searchList(String ten_san_pham, int ma_the_loai);
         public void updateProduct(Product p);
+        
 }
