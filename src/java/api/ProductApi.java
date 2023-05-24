@@ -38,10 +38,11 @@ public class ProductApi extends HttpServlet {
     throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
+//        System.out.println("put api");
         ObjectMapper objectMapper = new ObjectMapper();
         Product product = objectMapper.readValue(req.getReader(), Product.class);
-//        ProductDAO productDAO = new ProductDAOImpl();
-//        productDAO.updateProduct(product);
+        ProductDAO productDAO = new ProductDAOImpl();
+        productDAO.updateProduct(product);
         objectMapper.writeValue(resp.getWriter(), product);
     } 
 
@@ -98,7 +99,7 @@ public class ProductApi extends HttpServlet {
                     Product product = productDAO.getProduct(ma_san_pham);
                     if (product != null) {
                         ObjectMapper objectMapper = new ObjectMapper();
-                        System.out.println(product.getMa_san_pham());
+//                        System.out.println(product.getMa_san_pham());
                         objectMapper.writeValue(response.getWriter(), product);
                     }
                     
@@ -131,8 +132,8 @@ public class ProductApi extends HttpServlet {
                     Product product = productDAO.getProduct(ma_san_pham);
                     if (product != null) {
                         ObjectMapper objectMapper = new ObjectMapper();
-                        System.out.println(product.getMa_san_pham());
-                        
+//                        System.out.println(product.getMa_san_pham());
+                        productDAO.deleteProduct(ma_san_pham);
                         objectMapper.writeValue(resp.getWriter(), product);
                     }
                     
@@ -161,9 +162,9 @@ public class ProductApi extends HttpServlet {
         response.setContentType("application/json");
         ObjectMapper objectMapper = new ObjectMapper();
         Product product = objectMapper.readValue(request.getReader(), Product.class);
-//        ProductDAO productDAO = new ProductDAOImpl();
-//        productDAO.addProduct(product);
-        objectMapper.writeValue(response.getWriter(), product);
+        ProductDAO productDAO = new ProductDAOImpl();
+        productDAO.addProduct(product);
+        
         
     }
 

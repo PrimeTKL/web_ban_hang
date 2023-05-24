@@ -67,23 +67,13 @@ body {
 .delete:hover{
 	background-color: var(--yellow);
 }
-.order .btn-download{
-	background-color: #7ab3ed;
-	color: #CFE8FF;
-	border-radius: 10px;
-	padding: 3px;
-}
-.order .btn-download:hover{
- background-color: #18a4e9;
- cursor: pointer;
-}
 /* phân trang*/
 /* CSS cũ */
 .product-list {
 	/* CSS cho vùng hiển thị sản phẩm */
   }
   
-.pagination {
+  .pagination {
 	text-align: center;
   }
   
@@ -98,7 +88,7 @@ body {
 	margin: 0 5px;
   }
   
-.pagination ul li a {
+  .pagination ul li a {
 	display: inline-block;
 	padding: 5px 10px;
 	text-decoration: none;
@@ -107,7 +97,7 @@ body {
 	border-radius: 3px;
   }
   
-.pagination ul li a:hover {
+  .pagination ul li a:hover {
 	background-color: #ddd;
   }
   
@@ -174,9 +164,9 @@ button:hover{
 	overflow-x: hidden;
 	scrollbar-width: none;
 }
-#sidebar::--webkit-scrollbar {
+/*#sidebar::--webkit-scrollbar {
 	display: none;
-}
+}*/
 #sidebar.hide {
 	width: 60px;
 }
@@ -467,6 +457,8 @@ button:hover{
 }
 
 
+
+
 #content main .box-info {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -568,9 +560,9 @@ button:hover{
 	padding-left: 6px;
 }
 #content main .table-data .order table td img {
-	width: 100px;
-	height: 100px;
-	
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
 	object-fit: cover;
 }
 #content main .table-data .order table tbody tr:hover {
@@ -700,65 +692,50 @@ button:hover{
 }
 
 /*model*/
-.change{
+.change_product{
 	background-color: #F9F9F9;
 	max-width: calc(100%-32px);
 	min-height:200px;
-	background: linear-gradient(#67bfeb, #b9eaea); ;
+	background: linear-gradient(#e2eb67, #84dddd); ;
     border-radius: 20px;
-	animation: modal ease 0.5s ;
 }
-.change .head,.footer{
+.change_product .head,.footer{
 	padding:10px;
+	display: flex;
 	align-items: center;
 	justify-content: center;
-	display: flex;
 }
-.change .footer a:hover{
+.change_product .footer a:hover{
        background-color: #f10d06;
-	   cursor: pointer;
 }
-.change h3{
+.change_product h3{
 	margin: 5px;
 }
-.change .close{
+.change_product .close{
 	padding: 3px;
 	border: thin;
 	background: #e0716d;
 	border-radius: 5px;
 	color:white;
 }
-.change .completed_list{
+.change_product .completed_list{
 	margin-bottom: 20px;
 	margin-left: 20px;
 } 
 .completed_list input{
 	width: 50%;
 }
-.modalsua.open{
+.modal.open{
 	display: flex;
 }
-.modalthem.open{
-	display: flex;
-}
-.modalsua,.modalthem{
+.modal{
 	position: fixed;
 	top:0;
 	left: 0;
     right: 0;
 	bottom: 0;
+	display: none;
 	background: rgba(0,0,0, 0.4);
 	align-items: center;
 	justify-content: center;
-	display: none;
-}
-@keyframes modal{
-	from{
-		opacity: 0;
-        transform: translate(-150px);
-	}
-	to{
-		opacity: 1;
-        transform: translate(0);
-	}
 }
