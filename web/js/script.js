@@ -1,4 +1,4 @@
-*  xử lý sự kiện khi người dùng nhấp vào một mục trong menu bên.*/
+/*  xử lý sự kiện khi người dùng nhấp vào một mục trong menu bên.*/
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 allSideMenu.forEach(item => {
@@ -11,7 +11,17 @@ allSideMenu.forEach(item => {
 		li.classList.add('active');
 	})
 });
+// Dòng đầu tiên khai báo một hằng số "allSideMenu" bằng cách lựa chọn tất cả các phần tử <a> nằm trong các mục <li> trong menu bên. Điều này được thực hiện bằng cách sử dụng phương thức "querySelectorAll" trên phần tử có id là "sidebar", sau đó chọn các phần tử có lớp là "side-menu" và "top", cuối cùng là các phần tử <a>.
 
+// Dòng thứ hai bắt đầu vòng lặp "forEach" để duyệt qua mỗi phần tử trong danh sách "allSideMenu".
+
+// Trong mỗi lần lặp, dòng thứ tư lấy phần tử <li> cha của phần tử <a> đang xét và lưu vào biến "li".
+
+// Dòng thứ sáu gắn một trình lắng nghe sự kiện "click" cho mỗi phần tử <a>. Khi người dùng nhấp vào một phần tử <a>, hàm được thực thi.
+
+// Trong hàm xử lý sự kiện, dòng thứ tám bắt đầu một vòng lặp "forEach" khác trên danh sách "allSideMenu". Mục đích của vòng lặp này là loại bỏ lớp "active" khỏi tất cả các phần tử <li> trong danh sách để loại bỏ trạng thái "active" khỏi tất cả các mục menu.
+
+// Sau đó, dòng thứ chín thêm lớp "active" vào phần tử <li> cha của phần tử <a> mà người dùng đã nhấp vào. Điều này đảm bảo rằng mục menu được nhấp vào được đánh dấu là "active".
 
 
 
@@ -22,7 +32,13 @@ const sidebar = document.getElementById('sidebar');
 menuBar.addEventListener('click', function () {
 	sidebar.classList.toggle('hide');
 })
+// Dòng đầu tiên khai báo một hằng số "menuBar" bằng cách lựa chọn phần tử đầu tiên phù hợp với điều kiện trong câu truy vấn CSS, đó là phần tử có id là "content", có thẻ là "nav" và có lớp là "bx bx-menu". Điều này được thực hiện bằng cách sử dụng phương thức "querySelector" trên đối tượng document.
 
+// Dòng thứ hai lấy tham chiếu đến phần tử có id là "sidebar" và lưu vào biến "sidebar".
+
+// Dòng thứ tư gắn một trình lắng nghe sự kiện "click" cho phần tử "menuBar". Khi người dùng nhấp vào biểu tượng menu, hàm được thực thi.
+
+// Trong hàm xử lý sự kiện, dòng thứ sáu sử dụng phương thức "classList.toggle" trên phần tử "sidebar" để thêm hoặc loại bỏ lớp "hide". Lớp "hide" có thể có ý nghĩa là ẩn hiện thanh bên (sidebar) tùy thuộc vào trạng thái hiện tại của nó. Nếu thanh bên đang được ẩn, lớp "hide" sẽ được thêm vào và nếu thanh bên đang hiển thị, lớp "hide" sẽ bị loại bỏ.
 
 
 
@@ -76,27 +92,32 @@ switchMode.addEventListener('change', function () {
 		document.body.classList.remove('dark');
 	}
 })
-// Lấy thẻ <a> bằng id
-var myLink = document.getElementById('mystore');
 
-// Xử lý sự kiện click
-myLink.addEventListener('click', function (event) {
-	event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+//sử lý thêm tk
+	  const add=document.querySelector('.js-them') 
+      const modalthem=document.querySelector('.modalthem')
+	  const modalClosethem=document.querySelector('.js-modalclosethem')
+	  function showadd(){
+		modalthem.classList.add('open')
+	  }
+	  function closeadd(){
+		modalthem.classList.remove('open')
+	  }
+	  add.addEventListener('click',showadd)
+	  modalClosethem.addEventListener('click',closeadd)
 
-	var orderElement = document.querySelector('.list_product');
-	if (orderElement) {
-		orderElement.scrollIntoView(); // Chuyển hướng đến phần tử có class .order
-	}
-});
-var myLink = document.getElementById('addcategory');
+// //sử lý sửa danh mục
+const updates=document.querySelectorAll('.js-sua')
+const modal=document.querySelector('.modalsua')
+const modalclose=document.querySelector('.js-modalclosesua')
 
-// Xử lý sự kiện click
-myLink.addEventListener('click', function (event) {
-	event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
-
-	var orderElement = document.querySelector('.addproduct');
-	if (orderElement) {
-		orderElement.scrollIntoView(); // Chuyển hướng đến phần tử có class .order
-	}
-});
-
+function showupdate(){
+	modal.classList.add('open')
+}
+function closeupdate(){
+	modal.classList.remove('open')
+}
+for(const update of updates){
+	update.addEventListener('click',showupdate)
+}
+modalclose.addEventListener('click',closeupdate)
