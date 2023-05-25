@@ -102,10 +102,19 @@ public class ProductApi extends HttpServlet {
 //                        System.out.println(product.getMa_san_pham());
                         objectMapper.writeValue(response.getWriter(), product);
                     }
-                    
+                    else{
+                        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        response.getWriter().write("Khong co san pham voi ma do");
+                    }
                 } catch (NumberFormatException e) {
+                    response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    response.getWriter().write("Ma san pham khong hop le");
                     System.out.println(e);
                 }
+            }
+            else{
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                response.getWriter().write("Sai url");
             }
         }
     } 
@@ -117,7 +126,12 @@ public class ProductApi extends HttpServlet {
         
         String path = req.getPathInfo();
 //        System.out.println(path);
-        if (path != null || !path.equals("/")) {
+        if (path == null || path.equals("/")) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            resp.getWriter().write("Path khong co ma san pham");
+        }
+        else{
+            
             String[] pathVariable = path.split("/");
 //            System.out.println("." + path);
 //            System.out.println("size: " + pathVariable.length);
@@ -136,14 +150,23 @@ public class ProductApi extends HttpServlet {
                         productDAO.deleteProduct(ma_san_pham);
                         objectMapper.writeValue(resp.getWriter(), product);
                     }
+                    else{
+                        resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                        resp.getWriter().write("Khong co san pham do");
+                    }
                     
                 } catch (NumberFormatException e) {
+                    resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                    resp.getWriter().write("Sai ma san pham can xoa");
                     System.out.println(e);
                 }
             }
-        }
-        else{
-            
+            else{
+                System.out.println("sai ma san pham");
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                resp.getWriter().write("Sai ma san pham can xoa");
+            }
+
         }
     }
 
