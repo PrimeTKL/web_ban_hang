@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/admin.css">
-    <title>danh sách sản phẩm</title>
+    <title>Danh sách sản phẩm</title>
 </head>
 
 <body>
@@ -80,13 +80,7 @@
                 </form>
                 <input type="checkbox" id="switch-mode" hidden>
                 <label for="switch-mode" class="switch-mode"></label>
-                <!-- <a href="#" class="notification">
-                        <i class='bx bxs-bell'></i>
-                        <span class="num">8</span>
-                    </a>
-                    <a href="#" class="profile">
-                        <img src="img/people.png">
-                    </a> -->
+                
                 <a href="#" class="btn-download">
                     <i class='bx bxs-cloud-download'></i>
                     <span class="text">thêm tài khoản</span>
@@ -125,7 +119,7 @@
                             </thead>
                             <tbody>
                                 <%--<c:set var="categories" value="${requestScope.categories}"></c:set>--%>
-                                <c:forEach items="${requestScope.products}" var="product">
+                                <c:forEach items="${requestScope.products}" varStatus="loop" var="product">
                                     
                                     <tr>
                                         <td style="text-align: center">${product.ten_san_pham}</td>
@@ -136,12 +130,15 @@
                                         <td style="text-align: center">${product.thong_tin}</td>
                                         <td style="text-align: center">${product.so_luong_kho}</td>
                                         <td style="text-align: center">${product.so_luong_ban}</td>
-                                        <c:if>
-                                            
+                                        <c:if test="${product.hien_thi == 1}">
+                                            <td><input type="radio" checked="checked" readonly> </td>
                                         </c:if>
-                                        <td style="text-align: center">${product.hien_thi}</td>
+                                        <c:if test="${product.hien_thi == 0}">
+                                        <td><input type="radio" readonly></td>
+                                        </c:if>
+                                        <!--<td style="text-align: center">${product.hien_thi}</td>-->
                                         <td><button class="update js-sua">Sửa</button></td>
-                                        <td><a class="delete" href="#">Xóa</a></td>
+                                        <td><a class="delete" href="/shop/admin-product?command=delete&ma_san_pham=${product.ma_san_pham}">Xóa</a></td>
 
                                     </tr>
                                 </c:forEach>
@@ -163,78 +160,61 @@
             </main>
         </section>
     <!--thêm-->
-    <form action="">
+    <form action="admin-product" method="post" enctype="multipart/form-data">
         <div class="modalthem js_modal">
             <div class="todo change_product change">
                 <div class="head">
-                    <h3>thêm sản phẩm</h3>
-                    <i class='bx bx-filter'></i>
-                    <input class="savesp" type="submit" title="Lưu sản phẩm" value="lưu sản phẩm" />
+                    <h3>Thêm sản phẩm</h3>
+                    
+                    
                 </div>
                 <ul class="todo-list">
                     <li class="completed_list">
-                        <p>tên sản phẩm <input class="addsp" type="text" placeholder="tên sản phẩm..."></p>
+                        <p>Tên sản phẩm <input class="addsp" name="ten_san_pham" type="text" placeholder="Tên sản phẩm..." required></p>
 
                     </li>
                     <li class="completed_list">
-                        <p>giá sản phẩm <input class="addsp" type="text" placeholder="giá..."></p>
+                        <p>Giá <input class="addsp" name="gia_ban" type="number" min="0" placeholder="Giá..." required></p>
 
                     </li>
                     <li class="completed_list">
-                        <p>ảnh sản phẩm <input class="addsp" type="file" placeholder=""></p>or link<input type="url">
+                        Thể loại <select accept-charset="utf-8" name="ma_the_loai" required>
+                            <c:forEach items="${categories}" var="category">
+                                <option accept-charset="utf-8"  value="${category.key}">${category.value.ten_the_loai}</option>
+                            </c:forEach>
+                        </select>
+                        
+                    </li>
+                    <li class="completed_list">
+                        Ảnh sản phẩm <input class="addsp" type="file" name="hinh_anh" required/>
 
                     </li>
                     <li class="completed_list">
-                        <p>nội dung <textarea class="text-sp" name="content" id="product-content"></textarea>
-                        </p>
-
+                        Hãng sản xuất <input type="text" class="text-sp" name="hang_san_xuat" required/>
                     </li>
                     <li class="completed_list">
-                        <p>số lượng <input class="addsp" type="text" placeholder="note..."></p>
+                        Thông tin <input type="text" class="text-sp" name="thong_tin" id="product-content" required/>
                     </li>
-
+                    <li class="completed_list">
+                        Số lượng kho <input class="addsp" type="number" name="so_luong_kho" value="0" min="0" placeholder="Số lượng kho..." required/>
+                    </li>
+                    <li class="completed_list">
+                        Số lượng bán <input class="addsp" type="number" name="so_luong_ban" value="0" min="0" placeholder="Số lượng bán..." required/>
+                    </li>
+                    <li class="completed_list">
+                        Hiển thị <input class="addsp" type="checkbox" value="1" name="hien_thi" checked />
+                        <input type="hidden" value="0" name="ma_san_pham">
+                    </li>
+                    <li>
+                        <input class="savesp" type="submit" title="Lưu sản phẩm" value="Lưu sản phẩm" />
+                    </li>
                 </ul>
+                
                 <div class="footer js-modalclosethem"><a class="close ">close</a></div>
             </div>
         </div>
     </form>
-        <!-- sửa sản phẩm -->
-        <form action="">
-            <div class="modalsua js_modal">
-                <div class="todo change_product change">
-                    <div class="head">
-                        <h3>sửa sản phẩm</h3>
-                        <i class='bx bx-filter'></i>
-                        <input class="savesp" type="submit" title="Lưu sản phẩm" value="lưu sản phẩm" />
-                    </div>
-                    <ul class="todo-list">
-                        <li class="completed_list">
-                            <p>tên sản phẩm <input class="addsp" type="text" placeholder="tên sản phẩm..."></p>
-        
-                        </li>
-                        <li class="completed_list">
-                            <p>giá sản phẩm <input class="addsp" type="text" placeholder="giá..."></p>
-        
-                        </li>
-                        <li class="completed_list">
-                            <p>ảnh sản phẩm <input class="addsp" type="file" placeholder=""></p>or link<input type="url">
-        
-                        </li>
-                        <li class="completed_list">
-                            <p>nội dung <textarea class="text-sp" name="content" id="product-content"></textarea>
-                            </p>
-        
-                        </li>
-                        <li class="completed_list">
-                            <p>số lượng <input class="addsp" type="text" placeholder="note..."></p>
-                        </li>
-        
-                    </ul>
-                    <div class="footer js-modalclosesua"><a class="close ">close</a></div>
-                </div>
-            </div>
-        </form>
-        <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

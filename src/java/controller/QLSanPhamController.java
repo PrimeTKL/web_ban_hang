@@ -10,12 +10,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,11 +31,13 @@ import model.Category;
 import model.Product;
 import model.User;
 
+
 /**
  *
  * @author Windows 10 TIMT
  */
 @WebServlet(name="QLSanPhamController", urlPatterns={"/admin-product"})
+@MultipartConfig
 public class QLSanPhamController extends HttpServlet {
    
     /** 
@@ -37,6 +47,8 @@ public class QLSanPhamController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private List<Product> products = new ArrayList<>();
+    private Map<Integer, Category> map = new HashMap<>();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -65,6 +77,32 @@ public class QLSanPhamController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        String command = request.getParameter("command");
+//        System.out.println(command);
+        if (command != null && command.equals("delete")) {
+            int ma_san_pham = Integer.parseInt(request.getParameter("ma_san_pham"));
+            URL url1 = new URL("http://localhost:8081/shop/api/product/" + ma_san_pham);
+//            System.out.println(url1);
+            HttpURLConnection connection1 = (HttpURLConnection) url1.openConnection();
+            connection1.setRequestProperty("Accept", "application/json");
+            connection1.setRequestMethod("DELETE");
+            if (connection1.getResponseCode() != 200) {
+                System.out.println("loi " + connection1.getResponseCode());
+                throw new RuntimeException("Failed : HTTP Error code : "
+                        + connection1.getResponseCode());
+            }
+            ObjectMapper objectMapper1 = new ObjectMapper();
+            Product product = objectMapper1.readValue(connection1.getInputStream(), Product.class);
+//            System.out.println(product.getMa_san_pham());
+            connection1.disconnect();
+            String path = getServletContext().getRealPath("/");
+            String filepath = path + "sanpham" + File.separator + product.getHinh_anh();
+            File file = new File(filepath);
+            file.delete();
+//            response.sendRedirect("/shop/admin-product");
+        }
+        
+        
         URL url = new URL("http://localhost:8081/shop/api/product");
 //        System.out.println(url);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -76,7 +114,7 @@ public class QLSanPhamController extends HttpServlet {
                     + connection.getResponseCode());
         }
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Product> products = objectMapper.readValue(connection.getInputStream(), new TypeReference<List<Product>>(){});
+        products = objectMapper.readValue(connection.getInputStream(), new TypeReference<List<Product>>(){});
 //        for (Product product : products) {
 //            System.out.println(product.getTen_san_pham());
 //        }
@@ -93,7 +131,7 @@ public class QLSanPhamController extends HttpServlet {
                     + connection.getResponseCode());
         }
         List<Category> categories = objectMapper.readValue(connection.getInputStream(), new TypeReference<List<Category>>(){});
-        Map<Integer, Category> map = new HashMap<>();
+        
         for (Category category : categories) {
             map.put(category.getMa_the_loai(), category);
         }
@@ -112,7 +150,54 @@ public class QLSanPhamController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        int ma_san_pham = Integer.parseInt(request.getParameter("ma_san_pham"));
+        String ten_san_pham = request.getParameter("ten_san_pham");
+        int gia_ban = Integer.parseInt(request.getParameter("gia_ban"));
+        int ma_the_loai = Integer.parseInt(request.getParameter("ma_the_loai"));
+        String hang_san_xuat = request.getParameter("hang_san_xuat");
+        String thong_tin = request.getParameter("thong_tin");
+        int so_luong_kho = Integer.parseInt(request.getParameter("so_luong_kho"));
+//        System.out.println(request.getParameter("so_luong_kho"));
+        int so_luong_ban = Integer.parseInt(request.getParameter("so_luong_ban"));
+        int hien_thi = (request.getParameter("hien_thi") != null)? 1:0;
+        
+        Part filePart = request.getPart("hinh_anh");
+        String fileName = filePart.getSubmittedFileName();
+        String path = getServletContext().getRealPath("/");
+        String filepath = path + "sanpham" + File.separator + fileName;
+//        System.out.println(filepath);
+        InputStream inputStream = filePart.getInputStream();
+        File file =  new File(filepath);
+        OutputStream outputStream = new FileOutputStream(file);
+        byte[] buffer = new byte[4096];
+        int bytesRead = -1;
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+        outputStream.close();
+        inputStream.close();
+        
+        URL url = new URL("http://localhost:8081/shop/api/product");
+//        System.out.println(url);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+        Product product = new Product(ma_san_pham, ma_the_loai, ten_san_pham, fileName, gia_ban, hang_san_xuat, thong_tin, so_luong_kho, so_luong_ban, hien_thi);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.writeValue(connection.getOutputStream(), product);
+//        System.out.println("viet thanh cong");
+        if (connection.getResponseCode() != 200) {
+            System.out.println("loi " + connection.getResponseCode());
+            if (file.delete()) {
+                System.out.println("xoa thanh cong");
+            } else {
+                System.out.println("xoa that bai");
+            }
+            throw new RuntimeException("Failed : HTTP Error code : "
+                    + connection.getResponseCode());
+        }
+        response.sendRedirect("/shop/admin-product");
     }
 
     /** 

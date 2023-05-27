@@ -3,15 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/New%20folder%20(2)/ltw/shop/src/java/dao/Main.java</file>
             <file>file:/D:/New%20folder%20(2)/ltw/shop/src/java/controller/AdminController.java</file>
             <file>file:/D:/New%20folder%20(2)/ltw/shop/src/java/controller/QLSanPhamController.java</file>
             <file>file:/D:/New%20folder%20(2)/ltw/shop/src/java/model/Product.java</file>
             <file>file:/D:/New%20folder%20(2)/ltw/shop/web/views/admin/index.jsp</file>
-            <file>file:/D:/New%20folder%20(2)/ltw/shop/src/java/api/CategoryApi.java</file>
             <file>file:/D:/New%20folder%20(2)/ltw/shop/web/views/admin/QLSanPham.jsp</file>
-            <file>file:/D:/New%20folder%20(2)/ltw/shop/web/css/cart.css</file>
-            <file>file:/D:/New%20folder%20(2)/ltw/shop/web/css/admin.css</file>
-            <file>file:/D:/New%20folder%20(2)/ltw/shop/web/views/client/cart.jsp</file>
         </group>
     </open-files>
 </project-private>
