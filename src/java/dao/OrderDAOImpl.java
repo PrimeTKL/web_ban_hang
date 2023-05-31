@@ -76,6 +76,67 @@ public class OrderDAOImpl implements OrderDAO {
 		}
 		return list;
 	}
+
+    @Override
+    public List<Order> findAllByTrangThai(String status) {
+        Connection con = null;
+            try {
+                con = new DBConnect().getConnection();
+            } catch (Exception ex) {
+                Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+		String sql = "select * from `order` where trang_thai='"+ status +"'";
+		List<Order> list = new ArrayList<Order>();
+		try {
+			PreparedStatement ps = (PreparedStatement) con
+					.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int order_id = rs.getInt("order_id");
+				int user_id = rs.getInt("user_id");
+				int ma_san_pham = rs.getInt("ma_san_pham");
+				Timestamp ngay_mua = rs.getTimestamp("ngay_mua");
+				int so_luong = rs.getInt("so_luong");
+				int thanh_tien = rs.getInt("thanh_tien");
+                                String trang_thai = rs.getString("trang_thai");
+				list.add(new Order(order_id, user_id, ma_san_pham, ngay_mua, so_luong, thanh_tien, trang_thai));
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+    }
+    
+    
+    @Override
+    public List<Category> getTenTheLoaiCategories(String tentheloai) {
+        Connection con = null;
+            try {
+                con = new DBConnect().getConnection();
+            } catch (Exception ex) {
+                Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+		String sql = "select * from `category` where ten_the_loai='"+ tentheloai +"'";
+		List<Category> list = new ArrayList<Category>();
+		try {
+			PreparedStatement ps = (PreparedStatement) con
+					.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				
+				int ma_the_loai = rs.getInt("ma_the_loai");
+				String ten_the_loai = rs.getString("ten_the_loai");
+				String mo_ta = rs.getString("mo_ta");
+				String hinh_anh = rs.getString("hinh_anh");
+				list.add(new Category(ma_the_loai,ten_the_loai, mo_ta, hinh_anh ));
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+    }
 	
 
 }

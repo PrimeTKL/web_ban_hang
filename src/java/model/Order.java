@@ -21,7 +21,7 @@ public class Order {
             this.ma_san_pham = ma_san_pham;
             this.ngay_mua = ngay_mua;
             this.so_luong = so_luong;
-            this.thanh_tien = thanh_tien;
+            this.thanh_tien = thanh_tien;   
             this.trang_thai = trang_thai;
         }
 
@@ -33,11 +33,6 @@ public class Order {
             this.order_id = order_id;
         }
         
-        
-	
-	
-	
-
         public String getTrang_thai() {
             return trang_thai;
         }
@@ -85,8 +80,5 @@ public class Order {
 	public int getThanh_tien() {
 		return thanh_tien;
 	}
-        
-        
-	
-
+       	
 }

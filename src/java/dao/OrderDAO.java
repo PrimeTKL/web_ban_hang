@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import model.Category;
 
 import model.Order;
 
@@ -11,5 +12,10 @@ public interface OrderDAO {
 	
 	//lọc lịch sử của khách hàng.
 	public List<Order> getList(int user_id);
-
+                   
+                   public List<Order> findAllByTrangThai(String trang_thai);
+                    
+                   public List<Category> getTenTheLoaiCategories(String ten_the_loai); 
+        
+ 
 }

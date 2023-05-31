@@ -94,7 +94,7 @@ public class CategoryDAOImpl{
              } catch (Exception ex) {
                  Logger.getLogger(CategoryDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
              }
-		String sql = "delete from category where ma_the_loai='" + ma_the_loai
+		String sql = "delete from `category` where ma_the_loai='" + ma_the_loai
 				+ "'";
 		try {
 			PreparedStatement ps = (PreparedStatement) conn
@@ -110,7 +110,7 @@ public class CategoryDAOImpl{
 
 	public Category getCategory(int id) throws Exception {
 		conn = new DBConnect().getConnection();
-		String sql = "select * from category where ma_the_loai='" + id + "'";
+                                    String sql = "select * from `category` where `ma_the_loai`=" + id;
 		Category c = new Category();
 		try {
 			PreparedStatement ps = (PreparedStatement) conn

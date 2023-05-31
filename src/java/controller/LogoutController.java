@@ -65,8 +65,8 @@ public class LogoutController extends HttpServlet {
             if(cookie.getName().equals("username")){	
                 loginCookie = cookie;
                 break;
+                }
             }
-        }
         }
         if(loginCookie != null){
             loginCookie.setMaxAge(0);
