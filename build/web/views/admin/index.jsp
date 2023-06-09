@@ -6,9 +6,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
         <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+=======
+     
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
         <link rel="stylesheet" href="css/admin.css">
         <title>Trang quản trị</title>
          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -68,24 +72,41 @@
     <body>
          
         <section id="sidebar">
+<<<<<<< HEAD
 		<a href="/shop/admin" class="brand">
+=======
+		<a href="#" class="brand">
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
 			<i class='bx bxs-smile'></i>
 			<span class="text">Trang quản trị</span>
 		</a>
 		<ul class="side-menu top">
+<<<<<<< HEAD
 			<li class="active">
+=======
+			<li>
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
 				<a href="/shop/admin" id="thongke">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Trang chủ</span>
 				</a>
 			</li>
                         <li>
+<<<<<<< HEAD
 				<a href="/shop/listdanhmuc" >
 					<i class='bx bx-category'></i>
 					<span class="text">Quản lý danh mục</span>
 				</a>
 			</li>
 			<li >
+=======
+				<a href="/shop/admin" >
+					<i class='bx bxs-dashboard'></i>
+					<span class="text">Quản lý danh mục</span>
+				</a>
+			</li>
+			<li class="active">
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
 				<a href="/shop/admin-product" id="mystore">
 					<i class='bx bxs-shopping-bag-alt'></i>
 					<span class="text">Quản lý sản phẩm</span>
@@ -94,18 +115,28 @@
 			</li>
 		
                         <li>
+<<<<<<< HEAD
                             <a href="/shop/admin/order" id="addcategory">
+=======
+                            <a href="/shop/admin" id="addcategory">
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
                                 <i class='bx bxs-doughnut-chart'></i>
                                 <span class="text">Quản lý đơn hàng</span>
                             </a>
                         </li>
 			
+<<<<<<< HEAD
 			<li >
 				<a href="/shop/admin-user" id="tk">
+=======
+			<li>
+				<a href="/shop/admin" id="tk">
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
 					<i class='bx bxs-group'></i>
 					<span class="text">Quản lý người dùng</span>
 				</a>
 			</li>
+<<<<<<< HEAD
                         <c:if test="${sessionScope.admin.role == 1}">
                             <li >
 				<a href="/shop/phanquyen" id="tk">
@@ -115,11 +146,24 @@
                             </li>
                             
                         </c:if>
+=======
+<!--                        <li>
+				<a href="#" id="mystore">
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Quay lại trang Home</span>
+				</a>
+
+			</li>-->
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
 		</ul>
         
 		<ul class="side-menu">
 			<li>
+<<<<<<< HEAD
 				<a href="/shop/admin/logout" class="logout">
+=======
+				<a href="#" class="logout">
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
 					<i class='bx bxs-log-out-circle'></i>
 					<span class="text">Logout</span>
 				</a>
@@ -129,8 +173,13 @@
         <!-- CONTENT -->
 	<section id="content">
         <nav>
+<<<<<<< HEAD
                 <i class='bx bx-menu'></i>
                 <a href="/shop/admin" class="nav-link">Trang chủ</a>
+=======
+                <i class='bx bx-menu'><img src="images/menu.svg"/></i>
+                <a href="#" class="nav-link">Categories</a>
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
                 <form action="#">
                     <div class="form-input">
                         <input type="search" placeholder="Search...">
@@ -140,9 +189,15 @@
                 <input type="checkbox" id="switch-mode" hidden>
                 <label for="switch-mode" class="switch-mode"></label>
                 
+<<<<<<< HEAD
                 <a href="/shop/admin/update_profile" class="btn-download">
                     <i class='bx bxs-user-account'></i>
                     <span class="text">Xin chào: ${sessionScope.admin.username}</span>
+=======
+                <a href="#" class="btn-download">
+                    <i class='bx bxs-cloud-download'></i>
+                    <span class="text">thêm tài khoản</span>
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
                 </a>
 
             </nav>
@@ -178,7 +233,11 @@
 					<i class='bx bxs-group'></i>
 					<span class="text">
 						<h3>${tongSoNguoiDung}</h3>
+<<<<<<< HEAD
 						<p>Người dùng</p>
+=======
+						<p>Visitors</p>
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
 					</span>
 				</li>
 				<li>
