@@ -13,7 +13,7 @@
 
     <!-- SIDEBAR -->
     <section id="sidebar">
-        <a href="#" class="brand">
+        <a href="/shop/admin" class="brand">
             <i class='bx bxs-smile'></i>
             <span class="text">Trang ch?</span>
         </a>

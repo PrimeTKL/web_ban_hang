@@ -100,5 +100,15 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+        public User(int user_id, String username, String password, java.sql.Date ngaysinh, String gioitinh, String email, String sdt, String diachi) {
+            this.user_id = user_id;
+            this.username = username;
+            this.password = password;
+            this.ngaysinh = ngaysinh;
+            this.gioitinh = gioitinh;
+            this.email = email;
+            this.sdt = sdt;
+            this.diachi = diachi;
+        }
 
 }

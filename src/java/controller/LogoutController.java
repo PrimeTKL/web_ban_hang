@@ -56,7 +56,8 @@ public class LogoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        request.getSession().invalidate();
+        request.getSession().setAttribute("user", null);
+        request.getSession().setAttribute("cart", null);
         response.setContentType("text/html");
         Cookie loginCookie = null;
         Cookie[] cookies = request.getCookies();
