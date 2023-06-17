@@ -52,7 +52,11 @@
 					onblur="if (this.value == '') {this.value = '${product.hang_san_xuat}';}"
 					name="hang_san_xuat" required><a href="#" class=" icon2 lock2"></a></li>
 				Thông tin
+<<<<<<< HEAD
                                 <li><input type="text" value="${product.thong_tin}"
+=======
+                                <li><input type="text" value="${product.hang_san_xuat}"
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
 					onfocus="this.value = '';"
 					onblur="if (this.value == '') {this.value = '${product.thong_tin}';}"
 					name="thong_tin" required><a href="#" class=" icon2 lock2"></a></li>

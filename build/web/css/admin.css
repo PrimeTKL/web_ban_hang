@@ -174,7 +174,15 @@ button:hover{
 	overflow-x: hidden;
 	scrollbar-width: none;
 }
+<<<<<<< HEAD
 #sidebar::-webkit-scrollbar {
+=======
+<<<<<<< HEAD
+#sidebar::-webkit-scrollbar {
+=======
+#sidebar::--webkit-scrollbar {
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
 	display: none;
 }
 #sidebar.hide {

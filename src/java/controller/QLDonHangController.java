@@ -29,20 +29,29 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Timestamp;
+<<<<<<< HEAD
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+=======
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
+<<<<<<< HEAD
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
 import model.Category;
 import model.Order;
 import model.Product;
@@ -177,6 +186,7 @@ public class QLDonHangController extends HttpServlet {
                     
                 }
             }
+<<<<<<< HEAD
             else if (command.equals("search")) {
                 try {
                     List<Order> temp = new ArrayList<>();
@@ -214,6 +224,25 @@ public class QLDonHangController extends HttpServlet {
                     request.setAttribute("orders", temp);
                     request.getRequestDispatcher("/views/admin/QLDonHang.jsp").forward(request, response);
                 }
+=======
+//            else if (command.equals("search")) {
+//                String keyword = request.getParameter("keyword");
+//                List<Product> temp = new ArrayList<>();
+//                for (Product product : products) {
+//                    if (product.getTen_san_pham().contains(keyword)) {
+//                        temp.add(product);
+//                        System.out.println(product.getTen_san_pham());
+//                    }
+//                }
+//                request.setAttribute("products", temp);
+//                request.setAttribute("categories", map);
+//                request.getRequestDispatcher("/views/admin/QLSanPham.jsp").forward(request, response);
+//            }
+            else if (command.equals("filter")) {
+                
+                
+                request.getRequestDispatcher("/views/admin/QLDonHang.jsp").forward(request, response);
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
             }
         }
         

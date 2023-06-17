@@ -17,15 +17,22 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 import model.User;
+=======
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
 
 /**
  *
  * @author Windows 10 TIMT
  */
+<<<<<<< HEAD
 @WebFilter(filterName = "AdminFilter", urlPatterns = {"/admin/logout", "/admin", "/admin-product", "/admin-user",
         "/admin/update_profile", "/listdanhmuc", "/suadanhmuc", "/delete", "/hienthiadd", "/iddanhmuc",
         "/admin/order", "/admin-user", "/phanquyen"})
+=======
+@WebFilter(filterName = "AdminFilter", urlPatterns = {"/admin/logout", "/admin", "/admin-product"})
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
 public class AdminFilter implements Filter {
     
     private static final boolean debug = true;
@@ -114,6 +121,7 @@ public class AdminFilter implements Filter {
         if (req.getSession().getAttribute("admin") == null) {
             res.sendRedirect("/shop/admin/login");
         }
+<<<<<<< HEAD
         else{
             String path = req.getRequestURI();
             User user = (User) req.getSession().getAttribute("admin");
@@ -122,6 +130,8 @@ public class AdminFilter implements Filter {
                 res.sendRedirect("/shop/admin");
             }
         }
+=======
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
         Throwable problem = null;
         try {
             chain.doFilter(request, response);

@@ -512,6 +512,7 @@ public class UserDAOImpl implements UserDAO {
         }
         return list;
     }
+<<<<<<< HEAD
    @Override
    public User findUserByEmail(String email) {
         Connection con = null;
@@ -545,4 +546,7 @@ public class UserDAOImpl implements UserDAO {
         }
         return user;
     }
+=======
+   
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
 }

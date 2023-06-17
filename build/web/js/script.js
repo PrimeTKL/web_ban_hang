@@ -95,7 +95,15 @@ switchMode.addEventListener('change', function () {
 
 //sử lý thêm tk
 	  const add=document.querySelector('.js-them') 
+<<<<<<< HEAD
           const modalthem=document.querySelector('.modalthem')
+=======
+<<<<<<< HEAD
+          const modalthem=document.querySelector('.modalthem')
+=======
+      const modalthem=document.querySelector('.modalthem')
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
 	  const modalClosethem=document.querySelector('.js-modalclosethem')
 	  function showadd(){
 		modalthem.classList.add('open')
@@ -120,4 +128,13 @@ function closeupdate(){
 for(const update of updates){
 	update.addEventListener('click',showupdate)
 }
+<<<<<<< HEAD
 modalclose.addEventListener('click',closeupdate)
+=======
+modalclose.addEventListener('click',closeupdate)
+
+
+
+
+
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076

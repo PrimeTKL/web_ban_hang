@@ -55,11 +55,17 @@ public class Main {
 //        }
 //        Product product1 = objectMapper.readValue(connection.getInputStream(), Product.class);
 //        System.out.println(product1.getMa_san_pham() + " " + product1.getTen_san_pham());
+<<<<<<< HEAD
 //        OrderDAO orderDAO = new OrderDAOImpl();
 //        Order order = orderDAO.getOrderByOrder_id(8);
 //        System.out.println(order.getThanh_tien());
         for (int i = 0; i < 10; i++) {
             System.out.println(RandomString.rand(10));
         }
+=======
+        OrderDAO orderDAO = new OrderDAOImpl();
+        Order order = orderDAO.getOrderByOrder_id(8);
+        System.out.println(order.getThanh_tien());
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
     }
 }

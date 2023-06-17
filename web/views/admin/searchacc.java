@@ -2,52 +2,60 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package controller;
 
+import dao.UserDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
+import model.User;
 
 /**
  *
- * @author Windows 10 TIMT
+ * @author HP
  */
-@WebServlet(name="LogoutController", urlPatterns={"/logout"})
-public class LogoutController extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+@WebServlet(urlPatterns = {"/searchacc"})
+
+public class searchacc extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private List<User> users = new ArrayList<>();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LogoutController</title>");  
+            out.println("<title>Servlet searchacc</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LogoutController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet searchacc at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -55,29 +63,32 @@ public class LogoutController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        request.getSession().setAttribute("user", null);
-        request.getSession().setAttribute("cart", null);
-        response.setContentType("text/html");
-        Cookie loginCookie = null;
-        Cookie[] cookies = request.getCookies();
-        if(cookies != null){
-        for(Cookie cookie : cookies){
-            if(cookie.getName().equals("username")){	
-                loginCookie = cookie;
-                break;
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String command = request.getParameter("command");
+//        System.out.println(command);
+        UserDAOImpl dao=new  UserDAOImpl();
+        users=dao.getlist();
+        if (command != null) {
+            if (command.equals("search")) {
+                String keyword = request.getParameter("keyword");
+                List<User> temp = new ArrayList<>();
+                for (User user : users) {
+                    if (user.getUsername().contains(keyword)) {
+                        temp.add(user);
+                        System.out.println(user.getUsername());
+                    }
                 }
+                request.setAttribute("users", temp);
+                request.getRequestDispatcher("/views/admin/QLaccount.jsp").forward(request, response);
             }
         }
-        if(loginCookie != null){
-            loginCookie.setMaxAge(0);
-            response.addCookie(loginCookie);
-        }
-        response.sendRedirect("/shop/home");
-    } 
 
-    /** 
+    }
+
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -85,12 +96,12 @@ public class LogoutController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException {
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

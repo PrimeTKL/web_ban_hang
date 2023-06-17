@@ -50,7 +50,32 @@ public class CategoryDAOImpl {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+<<<<<<< HEAD
     }
+=======
+<<<<<<< HEAD
+    }
+=======
+                System.out.println("");
+	}
+	public void delCategory(int ma_the_loai) {
+             try {
+                 conn = new DBConnect().getConnection();
+             } catch (Exception ex) {
+                 Logger.getLogger(CategoryDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+             }
+		String sql = "delete from `category` where ma_the_loai='" + ma_the_loai
+				+ "'";
+		try {
+			PreparedStatement ps = (PreparedStatement) conn
+					.prepareStatement(sql);
+			ps.executeUpdate();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
 
     public List<Category> getList() throws Exception {
         conn = new DBConnect().getConnection();
@@ -86,6 +111,10 @@ public class CategoryDAOImpl {
         System.out.println("");
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
     public void delCategory(int ma_the_loai) {
         try {
             try {
@@ -102,6 +131,32 @@ public class CategoryDAOImpl {
             Logger.getLogger(CategoryDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+<<<<<<< HEAD
+=======
+=======
+	public Category getCategory(int id) throws Exception {
+		conn = new DBConnect().getConnection();
+                                    String sql = "select * from `category` where `ma_the_loai`=" + id;
+		Category c = new Category();
+		try {
+			PreparedStatement ps = (PreparedStatement) conn
+					.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int ma_the_loai = rs.getInt("ma_the_loai");
+				String ten_the_loai = rs.getString("ten_the_loai");
+				String mo_ta = rs.getString("mo_ta");
+				String hinh_anh = rs.getString("hinh_anh");
+				c = new Category(ma_the_loai, ten_the_loai, mo_ta, hinh_anh);
+			}
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return c;
+	}
+>>>>>>> afba4a65b1b2fc7c969577b7bd7ecb26bad8e076
+>>>>>>> 28a0da9dee07f49a67e9abde61520c936320e33b
 
     public Category getCategory(int id) throws Exception {
         conn = new DBConnect().getConnection();
