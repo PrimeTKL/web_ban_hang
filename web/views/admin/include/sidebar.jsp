@@ -1,66 +1,29 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/admin.css">
-        <title>Sidebar</title>
-    </head>
-    <body>
-        
-	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx'></i>
-			<span class="text">AdminHub</span>
-		</a>
-		<ul class="side-menu top">
-			<li class="active">
-				<a href="" id="thongke">
-                                    <i class='bx'><img src="images/1.png"></i>
-					<span class="text">Trang chủ</span>
-				</a>
-			</li>
-			<li>
-				<a href="#" id="mystore">
-					<i class='bx'></i>
-					<span class="text">Quản lý người dùng</span>
-				</a>
+<head>
 
-			</li>
-			<li>
-				<a href="#" id="addcategory">
-					<i class='bx'></i>
-					<span class="text">Quản lý danh mục</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class='bx'></i>
-					<span class="text">Quản lý sản phẩm</span>
-				</a>
-			</li>
-			<li>
-				<a href="#" id="tk">
-					<i class='bx'></i>
-					<span class="text">Quản lý đơn hàng</span>
-				</a>
-			</li>
-                        <li>
-				<a href="#" id="tk">
-					<i class='bx'></i>
-					<span class="text">Phân quyền</span>
-				</a>
-			</li>
-		</ul>
-		<ul class="side-menu">
-			<li>
-				<a href="#" class="logout">
-					<i class='bx'></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
-	</section>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Menu dọc</title>
+<link rel="stylesheet" href="css/category.css" />
+</head>
+<body>
 	
-    </body>
+	<div class="container">
+		<nav>
+		<ul class="mcd-menu">
+                    
+			<c:forEach var="c" items="${requestScope.categories}">
+				<li><a href="home?ma_the_loai=${c.ma_the_loai}"> <i class="fa fa-home"><img
+						src="images/${c.hinh_anh}"></i>
+					<strong>${c.ten_the_loai}</strong> <small>${c.mo_ta}</small>
+				</a></li>
+			</c:forEach>
+			
+		</ul>
+		</nav>
+	</div>
+</body>
 </html>
