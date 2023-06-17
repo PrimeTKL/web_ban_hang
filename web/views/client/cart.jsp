@@ -8,7 +8,8 @@
 <title>Giỏ hàng</title>
 <link rel="stylesheet" href="css/cart.css" />
 <link rel="stylesheet" href="css/menu.css" />
-<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/product.css" />
+
 
 
 <style type="text/css">
@@ -52,6 +53,7 @@
 	background-color: #F8F8FF;
 	margin-bottom: 5px;
 }
+
 </style>
 </head>
 <body>
@@ -66,39 +68,49 @@
 
 			<div class="shopping-cart">
                             
-				<div class="column-labels">
-					<label class="product-image">Hình ảnh</label> <label
-						class="product-details">Product</label> <label
-						class="product-price">Giá bán</label> <label
-						class="product-quantity">Số lượng</label><label
-						class="product-line-price">Tổng tiền</label>
-				</div>
+                            <div class = "container" style = "display: flex;
+  justify-content: space-between;
+ margin-bottom:20px;margin-left: -13px;"  >
+                                
+                                    
+                                    ,<div class = "col-md-2 big-header" style="font-size:22px">Hình ảnh</div>                                  
+                                    ,<div class = "col-md-3 big-header" style="font-size:22px">Sản phẩm</div>
+                                    ,<div class = "col-md-2 big-header" style="font-size:22px">Giá Bán</div>
+                                    ,<div class = "col-md-2 big-header"style="font-size:22px;margin-left:26px">Số lượng</div>
+                                    ,<div class = "col-md-2 big-header"style="font-size:22px;margin-right: 2px;"   >Thành tiền </div>                                     
+                                 
+                         
+                                
+                            </div>
 				<c:forEach items="${sessionScope.carts}" var="cart" varStatus="loop">
-					<div class="product">
+					<div class="product" style = " display: flex;
+  justify-content: space-between;
+  align-items: center"">
 						<div class="product-image">
 							<img src="sanpham/${cart.p.hinh_anh}">
 						</div>
 						<div class="product-details">
-							<div class="product-title">
+							<div class="product-title" style="font-size:18px;text-alight:center">
 								${cart.p.ten_san_pham}
 							</div>
 							<p class="product-description"></p>
 						</div>
-						<div class="product-price">
+						<div class="product-price"  style="font-size:18px;padding-right:90px"
+  ">
 							${cart.p.gia_ban} VNĐ
 						</div>
-						<div class="product-quantity cart_quantity_button">
+						<div class="product-quantity cart_quantity_button" >
 							<a class="cart_quantity_up" href="cart?command=deleteCart&index=${loop.index}"> - </a>
 							<input class="cart_quantity_input" type="number" value="${cart.quantity}" disabled="disabled">
                                                         <a class="cart_quantity_up" href="cart?command=addCart&index=${loop.index}"> + </a>
 							
 						</div>
-						<div class="product-line-price" style="text-align: right">${cart.quantity * cart.p.gia_ban}
+						<div class="product-line-price" style="text-align: right;font-size: 17px;
+    padding-left: 42px;">${cart.quantity * cart.p.gia_ban}
 							VNĐ
 						
-							<a
-						href="cart?command=removeCart&index=${loop.index}"><img style="margin-left: 10px"
-								src="images/delete.png"></a>
+							<a   href="cart?command=removeCart&index=${loop.index}"><img src="images/delete.png">
+                                                          </a>  
 						</div>
 						
 					</div>

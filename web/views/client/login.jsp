@@ -30,6 +30,9 @@
 				<div class="p-container">
 					<label class="checkbox"><input type="checkbox"
 						name="checkbox" checked><i></i>Ghi nhớ mật khẩu</label>
+					<h6>
+						<a href="/shop/reset-password">Khôi phục mật khẩu</a>
+					</h6>
 					
 					<div class="clear"></div>
 				</div>

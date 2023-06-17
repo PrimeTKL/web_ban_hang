@@ -8,6 +8,29 @@
 <title>Menu dọc</title>
 <link rel="stylesheet" href="css/category.css" />
 </head>
+<style>
+    
+select.input-1,
+input.input-1 {
+    width: 95%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+input.search-btn1 {
+    padding: 8px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+</style>
 <body>
 	
 	<div class="container">
@@ -18,12 +41,12 @@
                         <p>
                         <label for="tensp">Tên sản phẩm</label>
                         <br>
-                        <input accept-charset="utf-8" type="text"  name="ten_san_pham" style="width:97%">
+                        <input accept-charset="utf-8" type="text"  name="ten_san_pham" class="input-1">
                         </p>
                         <p>
                         <label for="theloai">Thể loại</label>
                         <br>
-                        <select accept-charset="utf-8" name="ma_the_loai" style="width:100%">
+                        <select accept-charset="utf-8" name="ma_the_loai" class="input-1">
                         	<option value="" selected="selected">--Chọn thể loại--</option>
                         	<c:forEach items="${requestScope.categories}" var="c">
                         		<option accept-charset="utf-8"  value="${c.ma_the_loai}">${c.ten_the_loai}</option>
@@ -31,7 +54,7 @@
                         		
                         </select>
                         </p>
-                        <input type="submit" value="Tìm kiếm" name="timKiem">
+                        <input class="search-btn1" type="submit" value="Tìm kiếm" name="timKiem">
                 	</form>
                 	</li>
                 	<li style="color: red">${requestScope.err}</li>

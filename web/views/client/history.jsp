@@ -8,8 +8,7 @@
 <title>Giỏ hàng</title>
 <link rel="stylesheet" href="css/cart.css" />
 <link rel="stylesheet" href="css/menu.css" />
-<link rel="stylesheet" href="css/main.css" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/product.css" />
 <style type="text/css">
 #main {
 	width: 1060px;
@@ -65,33 +64,34 @@
 			
 			<div class="shopping-cart">
 
-				<div class="column-labels">
-					<label class="product-image">Hình ảnh</label> 
-                                        <label class="product-details">Sản phẩm</label> 
-                                        <label class="product-price">Ngày mua</label>
-                                        <label class="product-quantity">Số lượng</label>
+				<div class="column-labels" ">
+					<label class="product-image" style="font-size:20px;color:black">Hình ảnh</label> 
+                                        <label class="product-details" style="font-size:20px;color:black">Sản phẩm</label> 
+                                        <label class="product-price" style="font-size:20px;color:black">Ngày mua</label>
+                                        <label class="product-quantity"style="font-size:20px;color:black">Số lượng</label>
                                         
-                                        <label class="product-line-price">Trạng thái</label>
+                                        <label class="product-line-price"style="font-size:20px;color:black">Trạng thái</label>
 				</div>
 				<c:forEach items="${requestScope.histories}" var="history">
-					<div class="product">
-						<div class="product-image">
+					<div class="product" style = " display: flex;
+  align-items: center; ">
+						<div class="product-image" >
 							<img
 								src="sanpham/${history.product.hinh_anh}">
 						</div>
-						<div class="product-details">
-							<div class="product-title">
+						<div class="product-details" style="font-size:20px">
+							<div class="product-title" style="font-size:20px">
 								${history.product.ten_san_pham}
 							</div>
-							<p class="product-description"></p>
+							<p class="product-description" ></p>
 						</div>
-						<div class="product-price">${history.ngay_mua}
+						<div class="product-price" style="font-size:20px">${history.ngay_mua}
 						</div>
-						<div class="product-quantity cart_quantity_button">
+						<div class="product-quantity cart_quantity_button" style="font-size:20px">
 							${history.so_luong}
 						</div>
 						
-                                                <div class="product-line-price" style="text-align: right">
+                                                <div class="product-line-price" style="text-align: right;font-size:20px">
 							${history.trang_thai}	
 						</div>
 						

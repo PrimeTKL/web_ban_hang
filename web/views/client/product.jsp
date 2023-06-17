@@ -8,6 +8,7 @@
 <title>Chi tiết sản phẩm</title>
 <link rel="stylesheet" href="css/detail.css" />
 <link rel="stylesheet" href="css/menu.css" />
+<link rel="stylesheet" href="css/product.css" />
 <style type="text/css">
 #main {
 	width: 1060px;
@@ -86,6 +87,10 @@
                                     <tr class="row2">
                                             <td class="col1">Mô tả:</td>
                                             <td class="col2">${product.thong_tin}</td>
+                                    </tr>
+                                    <tr class="row2">
+                                        <td class="col1" style="color: green;">Luợt mua:</td>
+                                            <td class="col2" style="color: green;">${product.so_luong_ban}</td>
                                     </tr>
 					
 					

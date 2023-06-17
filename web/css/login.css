@@ -1,10 +1,14 @@
-/*--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
---*/
-/* reset */
+
+#danhMuc{
+	width: 60%;
+	padding: 0.8em 4em 0.8em 1.7em;
+	color: #858282;
+	font-size: 17px;
+	outline: none;
+	background: none;
+	font-weight: 500;
+	border: none;
+}
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video
 	{
 	margin: 0;
@@ -211,7 +215,7 @@ form li {
 	background: url(../images/icon.png) no-repeat -49px 0px #ffc50c;
 }
 
-input[type="text"],input[type="password"],input[type="date"] {
+input[type="text"],input[type="password"],input[type="date"], input[type="file"], input[type="number"], input[type="checkbox"] {
 	width: 60%;
 	padding: 0.8em 4em 0.8em 1.7em;
 	color: #858282;
@@ -469,7 +473,7 @@ form.two li {
 	background: url(../images/icon2.png) no-repeat -99px 0px #702c91;
 }
 
-form.two input[type="text"],form.two input[type="password"] {
+form.two input[type="text"], form.two input[type="checkbox"],form.two input[type="password"], form.two input[type="file"], form.two input[type="number"]{
 	width: 60%;
 	padding: 0.8em 4em 0.8em 1.7em;
 	color: #858282;
@@ -594,7 +598,7 @@ form.three li {
 	background: url(../images/mail.png) no-repeat -0px 0px #f26122;
 }
 
-form.three input[type="text"],form.three input[type="password"] {
+form.three input[type="text"], form.three input[type="checkbox"],form.three input[type="password"], form.three input[type="file"], form.three input[type="number"] {
 	width: 60%;
 	padding: 0.8em 4em 0.8em 1.7em;
 	color: #858282;

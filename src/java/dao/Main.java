@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.List;
 import model.Order;
 import model.Product;
+import util.RandomString;
 
 /**
  *
@@ -37,23 +38,28 @@ public class Main {
 //            System.out.println(product.getTen_san_pham());
 //        }
 //        System.out.println(System.getProperty("user.dir"));
-        URL url = new URL("http://localhost:8081/shop/api/product");
-//        System.out.println(url);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestProperty("Accept", "application/json");
-        connection.setRequestMethod("POST");
-        connection.setDoOutput(true);
-        Product product = new Product(0, 1, "test", "test.jpg", 10, "test", "test", 0, 0, 1);
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(connection.getOutputStream(), product);
-        System.out.println("viet thanh cong");
-        if (connection.getResponseCode() != 200) {
-            System.out.println("loi " + connection.getResponseCode());
-            throw new RuntimeException("Failed : HTTP Error code : "
-                    + connection.getResponseCode());
-        }
+//        URL url = new URL("http://localhost:8081/shop/api/product");
+////        System.out.println(url);
+//        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//        connection.setRequestProperty("Accept", "application/json");
+//        connection.setRequestMethod("POST");
+//        connection.setDoOutput(true);
+//        Product product = new Product(0, 1, "test", "test.jpg", 10, "test", "test", 0, 0, 1);
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.writeValue(connection.getOutputStream(), product);
+//        System.out.println("viet thanh cong");
+//        if (connection.getResponseCode() != 200) {
+//            System.out.println("loi " + connection.getResponseCode());
+//            throw new RuntimeException("Failed : HTTP Error code : "
+//                    + connection.getResponseCode());
+//        }
 //        Product product1 = objectMapper.readValue(connection.getInputStream(), Product.class);
 //        System.out.println(product1.getMa_san_pham() + " " + product1.getTen_san_pham());
-        
+//        OrderDAO orderDAO = new OrderDAOImpl();
+//        Order order = orderDAO.getOrderByOrder_id(8);
+//        System.out.println(order.getThanh_tien());
+        for (int i = 0; i < 10; i++) {
+            System.out.println(RandomString.rand(10));
+        }
     }
 }

@@ -15,6 +15,7 @@
 	<div id="main">
 		<div id="head">
 			<img src="images/banner.jpg" width="1057px" height="200px" />
+                        
 		</div>
 
 		
@@ -54,6 +55,7 @@
                 
 		<div id="footer"><jsp:include page="include/footer.jsp"></jsp:include></div>
 	</div>
+                        
 
 </body>
 </html>

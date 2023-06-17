@@ -1,88 +1,106 @@
-.ft {
-  background-color: #f7f7f7;
-  color: #333;
-  padding: 20px;
+
+
+/* Kiểu cho phần thông tin liên hệ */
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.ft p {
-  font-size: 16px;
-  line-height: 1.5;
-  font-family: 'Open Sans', sans-serif;
-  margin-bottom: 20px;
-}
-
-.ft img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 20px;
-}
-
-.ft .box {
-  border: 1px solid #ccc;
-  background-color: #fff;
   padding: 20px;
-  margin-bottom: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.ft .button {
-  display: inline-block;
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.ft .button:hover {
-  background-color: #222;
-}
-
-.ft ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.ft li {
-  display: inline-block;
+/* Kiểu cho chi tiết liên hệ */
+.contact-details {
   margin-right: 20px;
 }
 
-.ft .product {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.ft .product img {
-  max-width: 100%;
-  height: auto;
+.contact-details h5.title {
+  font-size: 18px;
+  color: #333333;
   margin-bottom: 10px;
 }
 
-.ft .product h2 {
-  font-size: 20px;
-  margin-top: 0;
-  margin-bottom: 10px;
+.contact-details p {
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 5px;
 }
 
-.ft .product p {
+/* Kiểu cho menu */
+.menu {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.menu-section {
+  margin-right: 20px;
+}
+
+.menu-heading h5.title {
   font-size: 16px;
-  margin-top: 0;
+  color: #333333;
   margin-bottom: 10px;
 }
 
-.ft a {
-  color: #333;
+.menu-items a {
+  display: block;
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 5px;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-.ft a:hover {
-  color: #222;
+.menu-items a:hover {
+  color: #000000;
+}
+
+/* Kiểu cho form */
+.form-group {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+}
+
+.button-wrapper {
+  margin-left: 10px;
+}
+
+.submit-button {
+  padding: 8px 20px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #000000;
+}
+
+/* Kiểu cho social icons */
+.social-title {
+  font-size: 14px;
+  color: #666666;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  margin-right: 5px;
+}
+
+/* Kiểu cho border-div */
+.border-div {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  padding: 20px;
 }
